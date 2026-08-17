@@ -2,8 +2,11 @@ import Image from "next/image";
 import { NewsSection } from "@/components/news-section";
 import { SiteFooter } from "@/components/site-footer";
 import { StickyHeader } from "@/components/sticky-header";
+import { getCurrentAdmin } from "@/lib/auth";
 
-export default function Home() {
+export default async function Home() {
+  const admin = await getCurrentAdmin();
+
   return (
     <main className="min-h-screen overflow-hidden bg-[#050505] text-white">
       <svg aria-hidden="true" className="absolute h-0 w-0">
@@ -17,7 +20,7 @@ export default function Home() {
           />
         </filter>
       </svg>
-      <StickyHeader />
+      <StickyHeader showAdmin={Boolean(admin)} />
       <section className="relative isolate min-h-screen border-b border-[#b9924d]/35">
         <div className="absolute inset-0 -z-20">
           <Image

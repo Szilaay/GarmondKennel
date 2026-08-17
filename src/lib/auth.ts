@@ -47,6 +47,7 @@ export async function createAdminSession(userId: string) {
 export async function getCurrentAdmin() {
   const token = (await cookies()).get(sessionCookieName)?.value;
   if (!token) return null;
+  if (!/^[A-Za-z0-9_-]{43}$/.test(token)) return null;
 
   await ensureDatabaseSchema();
 

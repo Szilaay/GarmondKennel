@@ -14,9 +14,12 @@ const navigation = [
   { label: "Kapcsolat", href: "#kapcsolat" },
 ];
 
-export function StickyHeader() {
+export function StickyHeader({ showAdmin }: { showAdmin: boolean }) {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const visibleNavigation = showAdmin
+    ? [...navigation, { label: "Admin", href: "/admin" }]
+    : navigation;
 
   useEffect(() => {
     const updateHeader = () => setScrolled(window.scrollY > 24);
@@ -72,11 +75,15 @@ export function StickyHeader() {
         </a>
 
         <nav aria-label="Fő navigáció" className="hidden items-center gap-7 xl:flex">
-          {navigation.map((item) => (
+          {visibleNavigation.map((item) => (
             <a
               key={item.label}
               href={item.href}
-              className="text-[11px] font-medium tracking-[0.12em] text-white/75 uppercase transition-colors hover:text-[#d6a552]"
+              className={
+                item.label === "Admin"
+                  ? "border border-[#b9924d]/65 px-4 py-2 text-[10px] font-semibold tracking-[0.15em] text-[#d6a552] uppercase transition-colors hover:bg-[#b9924d] hover:text-black"
+                  : "text-[11px] font-medium tracking-[0.12em] text-white/75 uppercase transition-colors hover:text-[#d6a552]"
+              }
             >
               {item.label}
             </a>
@@ -115,13 +122,17 @@ export function StickyHeader() {
         }`}
       >
         <nav aria-label="Mobil navigáció" className="mx-auto flex h-full max-w-lg flex-col justify-center py-8">
-          {navigation.map((item, index) => (
+          {visibleNavigation.map((item, index) => (
             <a
               key={item.label}
               href={item.href}
               tabIndex={menuOpen ? 0 : -1}
               onClick={() => setMenuOpen(false)}
-              className="flex items-center justify-between border-b border-white/10 py-4 font-serif text-2xl text-white/85 transition-colors hover:text-[#d6a552]"
+              className={`flex items-center justify-between border-b py-4 font-serif text-2xl transition-colors hover:text-[#d6a552] ${
+                item.label === "Admin"
+                  ? "border-[#b9924d]/35 text-[#d6a552]"
+                  : "border-white/10 text-white/85"
+              }`}
             >
               <span>{item.label}</span>
               <span className="font-sans text-[10px] tracking-[0.18em] text-[#d6a552]/65">
