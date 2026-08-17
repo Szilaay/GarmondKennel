@@ -43,6 +43,21 @@ export default async function AdminPage() {
           lehet csatlakoztatni.
         </p>
 
+        <div className="mt-9 flex flex-wrap gap-4">
+          <Link
+            href="/admin/kutyak/uj"
+            className="inline-flex h-14 items-center border border-[#b9924d] bg-[#b9924d] px-7 text-xs font-semibold tracking-[0.17em] text-black uppercase transition-colors hover:bg-[#d6a552]"
+          >
+            Kutya hozzáadása
+          </Link>
+          <Link
+            href="/admin/kutyak"
+            className="inline-flex h-14 items-center border border-[#b9924d]/55 px-7 text-xs font-semibold tracking-[0.17em] text-[#d6a552] uppercase transition-colors hover:bg-[#b9924d] hover:text-black"
+          >
+            Kutyák kezelése
+          </Link>
+        </div>
+
         <div className="mt-12 grid gap-px overflow-hidden border border-[#b9924d]/25 bg-[#b9924d]/25 md:grid-cols-3">
           <div className="bg-[#0a0908] p-7">
             <p className="text-[10px] tracking-[0.18em] text-white/35 uppercase">Adatbázis</p>
