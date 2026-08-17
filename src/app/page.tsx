@@ -89,10 +89,18 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="relative mt-16 min-h-72 lg:mt-0 lg:min-h-[640px]" aria-label="A hero kutyakép helye">
-            <div className="absolute inset-0 grid place-items-center border border-dashed border-[#b9924d]/15 text-center text-[10px] tracking-[0.28em] text-[#b9924d]/35 uppercase">
-              Hero kutyakép helye
-            </div>
+          <div className="relative mt-10 min-h-80 lg:mt-0 lg:min-h-[640px]" aria-label="Garmond német juhászkutya">
+            <div className="absolute inset-x-[8%] bottom-[8%] h-[42%] rounded-[50%] bg-[#9c6429]/20 blur-3xl" />
+            <Image
+              src="/hero-german-shepherd-cutout.png"
+              alt="Garmond német juhászkutya"
+              fill
+              priority
+              unoptimized
+              sizes="(max-width: 1024px) 100vw, 58vw"
+              className="object-contain object-bottom drop-shadow-[0_22px_45px_rgba(0,0,0,0.65)] lg:translate-x-8 lg:scale-[1.24]"
+            />
+            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,#050505_0%,transparent_22%,transparent_100%)] lg:-left-16" />
           </div>
         </div>
       </section>
