@@ -1,16 +1,5 @@
 import Image from "next/image";
-
-const navigation = [
-  "Kezdőlap",
-  "Kutyáink",
-  "Kanok",
-  "Szukák",
-  "Almok",
-  "Eredmények",
-  "Rólunk",
-  "Hírek",
-  "Kapcsolat",
-];
+import { StickyHeader } from "@/components/sticky-header";
 
 export default function Home() {
   return (
@@ -26,6 +15,7 @@ export default function Home() {
           />
         </filter>
       </svg>
+      <StickyHeader />
       <section className="relative isolate min-h-screen border-b border-[#b9924d]/35">
         <div className="absolute inset-0 -z-20">
           <Image
@@ -41,43 +31,9 @@ export default function Home() {
         <div className="absolute inset-0 -z-10 hidden bg-[linear-gradient(90deg,#050505_0%,rgba(5,5,5,0.96)_27%,rgba(5,5,5,0.72)_42%,rgba(5,5,5,0.08)_66%,rgba(5,5,5,0.12)_100%)] lg:block" />
         <div className="absolute inset-0 -z-10 bg-[linear-gradient(0deg,rgba(5,5,5,0.82)_0%,transparent_24%,transparent_80%,rgba(5,5,5,0.45)_100%)]" />
 
-        <header className="mx-auto flex h-24 max-w-[1480px] items-center justify-between px-5 sm:px-8 lg:h-28 lg:px-12">
-          <a href="#kezdolap" aria-label="Garmond kezdőlap" className="relative h-20 w-28 shrink-0 lg:h-24 lg:w-36">
-            <Image
-              src="/garmond-logo.png"
-              alt="Garmond kennel logó"
-              fill
-              priority
-              sizes="144px"
-              className="object-contain"
-              style={{ filter: "url(#logo-black-to-white)" }}
-            />
-          </a>
+        <div className="h-24 lg:h-28" aria-hidden="true" />
 
-          <nav aria-label="Fő navigáció" className="hidden items-center gap-7 xl:flex">
-            {navigation.map((item, index) => (
-              <a
-                key={item}
-                href={index === 0 ? "#kezdolap" : `#${item.toLocaleLowerCase("hu-HU")}`}
-                className="text-[11px] font-medium tracking-[0.12em] text-white/75 uppercase transition-colors hover:text-[#d6a552]"
-              >
-                {item}
-              </a>
-            ))}
-          </nav>
-
-          <button
-            type="button"
-            aria-label="Menü megnyitása"
-            className="grid h-11 w-11 place-content-center gap-1.5 border border-[#b9924d]/55 xl:hidden"
-          >
-            <span className="block h-px w-5 bg-[#d6a552]" />
-            <span className="block h-px w-5 bg-[#d6a552]" />
-            <span className="block h-px w-5 bg-[#d6a552]" />
-          </button>
-        </header>
-
-        <div id="kezdolap" className="mx-auto grid min-h-[calc(100vh-7rem)] max-w-[1480px] items-center px-5 pb-20 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:px-12 lg:pb-28">
+        <div id="kezdolap" className="mx-auto grid min-h-[calc(100vh-6rem)] scroll-mt-20 max-w-[1480px] items-center px-5 pb-20 sm:px-8 lg:min-h-[calc(100vh-7rem)] lg:grid-cols-[1.1fr_0.9fr] lg:px-12 lg:pb-28">
           <div className="relative z-10 max-w-2xl pt-12 lg:pt-0">
             <p className="mb-5 text-xs font-semibold tracking-[0.34em] text-[#d6a552] uppercase">
               Garmond Kennel · Magyarország
