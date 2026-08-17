@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { NewsSection } from "@/components/news-section";
+import { SiteFooter } from "@/components/site-footer";
 import { StickyHeader } from "@/components/sticky-header";
 
 export default function Home() {
@@ -50,7 +51,7 @@ export default function Home() {
               Kiegyensúlyozott jellem. Időtálló érték.
             </p>
             <a
-              href="#kutyáink"
+              href="https://www.garmondkennel.hu/fedezokanok"
               className="mt-10 inline-flex h-14 items-center gap-8 border border-[#b9924d] px-7 text-xs font-semibold tracking-[0.16em] text-[#d6a552] uppercase transition-colors hover:bg-[#b9924d] hover:text-black"
             >
               Kutyáink <span aria-hidden="true">—</span>
@@ -165,6 +166,7 @@ export default function Home() {
       </section>
 
       <NewsSection />
+      <SiteFooter />
     </main>
   );
 }

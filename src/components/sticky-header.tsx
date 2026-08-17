@@ -4,19 +4,19 @@ import Image from "next/image";
 import { useEffect, useState } from "react";
 
 const navigation = [
-  "Kezdőlap",
-  "Kutyáink",
-  "Kanok",
-  "Szukák",
-  "Almok",
-  "Eredmények",
-  "Rólunk",
-  "Hírek",
-  "Kapcsolat",
+  { label: "Kezdőlap", href: "#kezdolap" },
+  { label: "Kanok", href: "https://www.garmondkennel.hu/fedezokanok" },
+  { label: "Szukák", href: "https://www.garmondkennel.hu/szukak" },
+  { label: "Almok", href: "https://www.garmondkennel.hu/kiskutyak" },
+  { label: "Eredmények", href: "#hírek" },
+  { label: "Rólunk", href: "#rólunk" },
+  { label: "Hírek", href: "#hírek" },
+  { label: "Kapcsolat", href: "#kapcsolat" },
 ];
 
 export function StickyHeader() {
   const [scrolled, setScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const updateHeader = () => setScrolled(window.scrollY > 24);
@@ -26,6 +26,23 @@ export function StickyHeader() {
 
     return () => window.removeEventListener("scroll", updateHeader);
   }, []);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+
+    const previousOverflow = document.body.style.overflow;
+    const closeOnEscape = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setMenuOpen(false);
+    };
+
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", closeOnEscape);
+
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", closeOnEscape);
+    };
+  }, [menuOpen]);
 
   return (
     <header
@@ -55,13 +72,13 @@ export function StickyHeader() {
         </a>
 
         <nav aria-label="Fő navigáció" className="hidden items-center gap-7 xl:flex">
-          {navigation.map((item, index) => (
+          {navigation.map((item) => (
             <a
-              key={item}
-              href={index === 0 ? "#kezdolap" : `#${item.toLocaleLowerCase("hu-HU")}`}
+              key={item.label}
+              href={item.href}
               className="text-[11px] font-medium tracking-[0.12em] text-white/75 uppercase transition-colors hover:text-[#d6a552]"
             >
-              {item}
+              {item.label}
             </a>
           ))}
         </nav>
@@ -69,12 +86,50 @@ export function StickyHeader() {
         <button
           type="button"
           aria-label="Menü megnyitása"
+          aria-expanded={menuOpen}
+          aria-controls="mobile-navigation"
+          onClick={() => setMenuOpen((open) => !open)}
           className="grid h-11 w-11 place-content-center gap-1.5 border border-[#b9924d]/55 transition-colors hover:border-[#d6a552] xl:hidden"
         >
-          <span className="block h-px w-5 bg-[#d6a552]" />
-          <span className="block h-px w-5 bg-[#d6a552]" />
-          <span className="block h-px w-5 bg-[#d6a552]" />
+          <span
+            className={`block h-px w-5 bg-[#d6a552] transition-transform duration-300 ${menuOpen ? "translate-y-[7px] rotate-45" : ""}`}
+          />
+          <span
+            className={`block h-px w-5 bg-[#d6a552] transition-opacity duration-300 ${menuOpen ? "opacity-0" : ""}`}
+          />
+          <span
+            className={`block h-px w-5 bg-[#d6a552] transition-transform duration-300 ${menuOpen ? "-translate-y-[7px] -rotate-45" : ""}`}
+          />
         </button>
+      </div>
+
+      <div
+        id="mobile-navigation"
+        aria-hidden={!menuOpen}
+        className={`fixed inset-x-0 bottom-0 border-t border-[#b9924d]/25 bg-[#050505]/97 px-5 backdrop-blur-xl transition-[top,opacity,visibility,transform] duration-300 xl:hidden ${
+          scrolled ? "top-20" : "top-24"
+        } ${
+          menuOpen
+            ? "visible translate-y-0 opacity-100"
+            : "invisible -translate-y-3 opacity-0"
+        }`}
+      >
+        <nav aria-label="Mobil navigáció" className="mx-auto flex h-full max-w-lg flex-col justify-center py-8">
+          {navigation.map((item, index) => (
+            <a
+              key={item.label}
+              href={item.href}
+              tabIndex={menuOpen ? 0 : -1}
+              onClick={() => setMenuOpen(false)}
+              className="flex items-center justify-between border-b border-white/10 py-4 font-serif text-2xl text-white/85 transition-colors hover:text-[#d6a552]"
+            >
+              <span>{item.label}</span>
+              <span className="font-sans text-[10px] tracking-[0.18em] text-[#d6a552]/65">
+                {String(index + 1).padStart(2, "0")}
+              </span>
+            </a>
+          ))}
+        </nav>
       </div>
     </header>
   );
