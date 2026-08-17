@@ -1,4 +1,5 @@
 import Image from "next/image";
+import { NewsSection } from "@/components/news-section";
 import { StickyHeader } from "@/components/sticky-header";
 
 export default function Home() {
@@ -162,6 +163,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <NewsSection />
     </main>
   );
 }
