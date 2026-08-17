@@ -27,8 +27,19 @@ export default function Home() {
         </filter>
       </svg>
       <section className="relative isolate min-h-screen border-b border-[#b9924d]/35">
-        <div className="absolute inset-0 -z-20 bg-[radial-gradient(circle_at_72%_42%,rgba(128,82,30,0.18),transparent_31%),linear-gradient(115deg,#050505_0%,#090806_58%,#020202_100%)]" />
-        <div className="absolute inset-y-0 right-0 -z-10 w-[58%] bg-[linear-gradient(90deg,#050505_0%,transparent_48%),radial-gradient(circle_at_70%_45%,rgba(214,151,70,0.12),transparent_38%)]" />
+        <div className="absolute inset-0 -z-20">
+          <Image
+            src="/hero-garmond-cinematic.png"
+            alt=""
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover object-[68%_center] opacity-90 sm:object-[64%_center] lg:opacity-100"
+          />
+        </div>
+        <div className="absolute inset-0 -z-10 bg-black/55 lg:hidden" />
+        <div className="absolute inset-0 -z-10 hidden bg-[linear-gradient(90deg,#050505_0%,rgba(5,5,5,0.96)_27%,rgba(5,5,5,0.72)_42%,rgba(5,5,5,0.08)_66%,rgba(5,5,5,0.12)_100%)] lg:block" />
+        <div className="absolute inset-0 -z-10 bg-[linear-gradient(0deg,rgba(5,5,5,0.82)_0%,transparent_24%,transparent_80%,rgba(5,5,5,0.45)_100%)]" />
 
         <header className="mx-auto flex h-24 max-w-[1480px] items-center justify-between px-5 sm:px-8 lg:h-28 lg:px-12">
           <a href="#kezdolap" aria-label="Garmond kezdőlap" className="relative h-20 w-28 shrink-0 lg:h-24 lg:w-36">
@@ -66,12 +77,12 @@ export default function Home() {
           </button>
         </header>
 
-        <div id="kezdolap" className="mx-auto grid min-h-[calc(100vh-7rem)] max-w-[1480px] items-center px-5 pb-20 sm:px-8 lg:grid-cols-[0.9fr_1.1fr] lg:px-12 lg:pb-28">
+        <div id="kezdolap" className="mx-auto grid min-h-[calc(100vh-7rem)] max-w-[1480px] items-center px-5 pb-20 sm:px-8 lg:grid-cols-[1.1fr_0.9fr] lg:px-12 lg:pb-28">
           <div className="relative z-10 max-w-2xl pt-12 lg:pt-0">
             <p className="mb-5 text-xs font-semibold tracking-[0.34em] text-[#d6a552] uppercase">
               Garmond Kennel · Magyarország
             </p>
-            <h1 className="font-serif text-5xl leading-[0.98] tracking-[0.01em] sm:text-6xl lg:text-7xl xl:text-[5.4rem]">
+            <h1 className="font-serif text-5xl leading-[0.98] tracking-[0.01em] sm:text-6xl lg:text-7xl xl:text-[4.6rem] 2xl:text-[5.4rem]">
               <span className="block text-[#cda464]">Bajnokok</span>
               <span className="mt-2 block">nem születnek.</span>
               <span className="mt-2 block">Felneveljük őket.</span>
@@ -89,19 +100,7 @@ export default function Home() {
             </a>
           </div>
 
-          <div className="relative mt-10 min-h-80 lg:mt-0 lg:min-h-[640px]" aria-label="Garmond német juhászkutya">
-            <div className="absolute inset-x-[8%] bottom-[8%] h-[42%] rounded-[50%] bg-[#9c6429]/20 blur-3xl" />
-            <Image
-              src="/hero-german-shepherd-cutout-v2.png"
-              alt="Garmond német juhászkutya"
-              fill
-              priority
-              unoptimized
-              sizes="(max-width: 1024px) 100vw, 58vw"
-              className="object-contain object-bottom drop-shadow-[0_22px_45px_rgba(0,0,0,0.65)] lg:translate-x-8 lg:scale-[1.24]"
-            />
-            <div className="pointer-events-none absolute inset-0 bg-[linear-gradient(90deg,#050505_0%,transparent_22%,transparent_100%)] lg:-left-16" />
-          </div>
+          <div className="hidden min-h-[640px] lg:block" aria-hidden="true" />
         </div>
       </section>
     </main>
