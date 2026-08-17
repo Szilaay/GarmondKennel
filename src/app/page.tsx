@@ -103,10 +103,12 @@ export default function Home() {
               <svg
                 aria-hidden="true"
                 viewBox="0 0 48 48"
-                className="h-11 w-11 shrink-0 fill-none stroke-[#d6a552] stroke-[1.4]"
+                className="h-11 w-11 shrink-0 fill-none stroke-[#d6a552] stroke-[1.6]"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
-                <circle cx="24" cy="24" r="17" />
-                <path d="M24 14v11l7 4M18 5h12M24 5v3" />
+                <circle cx="24" cy="24" r="16" />
+                <path d="M24 13v12l8 5" />
               </svg>
               <div>
                 <p className="font-serif text-2xl text-[#cda464]">30+ év</p>
@@ -137,14 +139,23 @@ export default function Home() {
               <svg
                 aria-hidden="true"
                 viewBox="0 0 48 48"
-                className="h-11 w-11 shrink-0 fill-none stroke-[#d6a552] stroke-[1.4]"
+                className="h-11 w-11 shrink-0 fill-none stroke-[#d6a552] stroke-[1.6]"
+                strokeLinecap="round"
+                strokeLinejoin="round"
               >
-                <path d="M15 7c13 8 13 26 0 34M33 7c-13 8-13 26 0 34M16 13h16M13 21h22M13 29h22M16 37h16" />
+                <circle cx="24" cy="8" r="3" />
+                <circle cx="15" cy="24" r="3" />
+                <circle cx="33" cy="24" r="3" />
+                <circle cx="9" cy="40" r="3" />
+                <circle cx="21" cy="40" r="3" />
+                <circle cx="27" cy="40" r="3" />
+                <circle cx="39" cy="40" r="3" />
+                <path d="M24 11v6H15v4M24 17h9v4M15 27v6H9v4M15 33h6v4M33 27v6h-6v4M33 33h6v4" />
               </svg>
               <div>
-                <p className="font-serif text-2xl text-[#cda464]">Tudatos</p>
+                <p className="font-serif text-2xl text-[#cda464]">Generációk</p>
                 <p className="mt-1 text-[11px] tracking-[0.16em] text-white/55 uppercase">
-                  Párosítás és szelekció
+                  Ismeret és tapasztalat
                 </p>
               </div>
             </div>
