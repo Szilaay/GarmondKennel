@@ -92,7 +92,7 @@ export default function Home() {
           <div className="relative mt-10 min-h-80 lg:mt-0 lg:min-h-[640px]" aria-label="Garmond német juhászkutya">
             <div className="absolute inset-x-[8%] bottom-[8%] h-[42%] rounded-[50%] bg-[#9c6429]/20 blur-3xl" />
             <Image
-              src="/hero-german-shepherd-cutout.png"
+              src="/hero-german-shepherd-cutout-v2.png"
               alt="Garmond német juhászkutya"
               fill
               priority
